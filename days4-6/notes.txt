@@ -1,0 +1,7 @@
+Use the Counter class to count words in a string.
+
+defaultdict() can be used when you might need to append values to a key that doesn't already exist.
+
+Deque is significantly faster when a list needs to be manipulated by removing and adding list items.
+
+%timeit can be used when running code to determine how long it takes the code to run.
