@@ -9,7 +9,6 @@ def main():
     movies_by_director = sort_movies_by_director(movies, experienced_directors)
     rated_directors = rate_directors(movies_by_director)
 
-
 def get_movie_list():
     url = 'https://raw.githubusercontent.com/sundeepblue/' \
           'movie_rating_prediction/master/movie_metadata.csv'
@@ -23,8 +22,8 @@ def get_movie_list():
 
         try:
             if int(movie['title_year']) < 1960:
-                print(f"Skipping {movie['movie_title']} - "
-                      f"{movie['title_year']}")
+                # print(f"Skipping {movie['movie_title']} - "
+                #       f"{movie['title_year']}")
                 continue
         except ValueError:
             # print(f"Skipping {movie['movie_title']}. "
@@ -33,8 +32,8 @@ def get_movie_list():
             pass
 
         if not movie['director_name']:
-            print(f"Skipping {movie['movie_title']}. "
-                  f"Unknown director.")
+            # print(f"Skipping {movie['movie_title']}. "
+            #       f"Unknown director.")
             continue
 
         processed_movies.append(collections.OrderedDict([
@@ -55,9 +54,9 @@ def qualify_directors(movies, required_count):
 
 
 def sort_movies_by_director(movies, directors):
-    sorted_movies = collections.defaultdict(list)
+    sorted_movies = dict()
     for director in directors:
-        sorted_movies[director] += [movie
+        sorted_movies[director] = [movie
                                     for movie in movies
                                     if movie['director_name'] == director]
     return sorted_movies
